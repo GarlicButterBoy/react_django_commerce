@@ -3,11 +3,10 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
+    <Header />
     <div>
-      <Header />
-      <main>
-        <h1>Welcome to my App</h1>
-      </main>
+      
+      My App
       <Footer />
     </div>
   );

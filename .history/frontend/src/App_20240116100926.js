@@ -5,9 +5,7 @@ function App() {
   return (
     <div>
       <Header />
-      <main>
-        <h1>Welcome to my App</h1>
-      </main>
+      <main>My App</main>
       <Footer />
     </div>
   );

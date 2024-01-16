@@ -6,8 +6,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <h1>Welcome to my App</h1>
-      </main>
+        </main>
       <Footer />
     </div>
   );
