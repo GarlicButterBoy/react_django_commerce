@@ -6,9 +6,10 @@ function Footer() {
     <footer>
       <Container>
         <Row>
-          <Col className="text-center py-3">Copyright &copy; ProShop</Col>
+          <Col>Copyright &copy; ProShop</Col>
         </Row>
       </Container>
+      Footer
     </footer>
   );
 }

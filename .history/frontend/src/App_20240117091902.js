@@ -7,9 +7,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <Container>
-          <h1>Welcome to my App</h1>
-        </Container>
+        <Container>Welcome to my App</Container>
       </main>
       <Footer />
     </div>
