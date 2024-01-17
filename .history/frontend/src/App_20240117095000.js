@@ -9,7 +9,7 @@ function App() {
       <Header />
       <main>
         <Container>
-          <HomeScreen />
+          <h1>Welcome to my App</h1>
         </Container>
       </main>
       <Footer />

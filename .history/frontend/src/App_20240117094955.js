@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import HomeScreen from "./screens/HomeScreen";
+import HomeScreen from "./components/Footer";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Header />
       <main>
         <Container>
-          <HomeScreen />
+          <h1>Welcome to my App</h1>
         </Container>
       </main>
       <Footer />
