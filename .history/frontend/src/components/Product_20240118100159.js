@@ -21,8 +21,8 @@ function Product({ product }) {
             {product.rating} from {product.numReviews}
             <Rating
               value={product.rating}
-              text={`${product.numReviews} reviews`}
-              color={"#f8e825"}
+                          text={`${product.numReviews} reviews`}
+                          
             />
           </div>
         </Card.Text>
