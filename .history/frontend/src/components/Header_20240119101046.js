@@ -18,7 +18,7 @@ function Header() {
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/login">
-              <Nav.Link>
+              <Nav.Link href="/login">
                 <i className="fas fa-user"></i>Login
               </Nav.Link>
             </LinkContainer>
