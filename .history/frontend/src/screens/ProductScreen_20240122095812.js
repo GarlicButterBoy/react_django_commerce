@@ -44,20 +44,11 @@ function ProductScreen({ match }) {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Status: </Col>
+                  <Col>Price: </Col>
                   <Col>
-                    {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                    <strong>${product.price}</strong>
                   </Col>
                 </Row>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Button
-                  className="btn-block"
-                  type="button"
-                  disabled={product.countInStock === 0}
-                >
-                  Add to Cart
-                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
