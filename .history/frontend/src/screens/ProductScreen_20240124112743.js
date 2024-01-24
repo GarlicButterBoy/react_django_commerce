@@ -14,7 +14,7 @@ function ProductScreen({ match }) {
       setProducts(data);
     }
     fetchProduct();
-  });
+  }, []);
 
   //const product = products.find((p) => p._id === match.params.id);
   return (

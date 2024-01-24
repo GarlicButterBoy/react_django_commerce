@@ -10,11 +10,11 @@ function ProductScreen({ match }) {
 
   useEffect(() => {
     async function fetchProduct() {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      const { data } = await axios.get(`/api/products/${match.para}`);
       setProducts(data);
     }
     fetchProduct();
-  });
+  }, []);
 
   //const product = products.find((p) => p._id === match.params.id);
   return (

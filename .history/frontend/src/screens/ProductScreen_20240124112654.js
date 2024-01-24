@@ -10,13 +10,13 @@ function ProductScreen({ match }) {
 
   useEffect(() => {
     async function fetchProduct() {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      const { data } = await axios.get("/api/products/");
       setProducts(data);
     }
-    fetchProduct();
-  });
+    fetchProducts();
+  }, []);
 
-  //const product = products.find((p) => p._id === match.params.id);
+  const product = products.find((p) => p._id === match.params.id);
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">

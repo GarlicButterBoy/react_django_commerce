@@ -7,13 +7,7 @@ import axios from "axios";
 function HomeScreen() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    async function fetchProducts() {
-      const { data } = await axios.get("/api/products/");
-      setProducts(data);
-    }
-    fetchProducts();
-  }, []);
+  useEffect(())
 
   return (
     <div>
