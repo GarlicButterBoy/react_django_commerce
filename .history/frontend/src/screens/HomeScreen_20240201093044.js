@@ -21,7 +21,7 @@ function HomeScreen() {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant=>{error}</Message>
       ) : (
         <Row>
           {products.map((product) => (
