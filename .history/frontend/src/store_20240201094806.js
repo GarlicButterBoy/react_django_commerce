@@ -7,8 +7,8 @@ import {
 } from "./reducers/productReducers";
 
 const reducer = combineReducers({
-  productList: productListReducer,
-  productDetails: productDetailsReducer,
+  productList: productListReducers,
+  productDetails: productDetailsReducers,
 });
 const initialState = {};
 const middleware = [thunk];

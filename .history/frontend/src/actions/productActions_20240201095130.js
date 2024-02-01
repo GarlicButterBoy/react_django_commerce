@@ -40,12 +40,12 @@ export const listProductDetails = (id) => async (dispatch) => {
     const { data } = await axios.get(`/api/products/${id}`);
 
     dispatch({
-      type: PRODUCT_DETAILS_SUCCESS,
+      type: PRODUCT_LIST_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: PRODUCT_DETAILS_FAIL,
+      type: PRODUCT_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

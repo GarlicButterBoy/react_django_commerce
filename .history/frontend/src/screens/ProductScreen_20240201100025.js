@@ -14,7 +14,7 @@ function ProductScreen({ match }) {
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
-  }, [dispatch, match]);
+  }, []);
 
   return (
     <div>
