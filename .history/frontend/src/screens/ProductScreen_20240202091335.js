@@ -15,7 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match, history }) {
+function ProductScreen({ match }) {
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
@@ -25,11 +25,6 @@ function ProductScreen({ match, history }) {
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
-
-  const addToCartHandler = () => {
-    console.log("Add to Cart: ", match.params.id);
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
-  };
 
   return (
     <div>
@@ -82,32 +77,12 @@ function ProductScreen({ match, history }) {
                       {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                     </Col>
                   </Row>
-                </ListGroup.Item>
-
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Qty: </Col>
-                      <Col xs="auto" className="my-1">
-                        <Form.Control
-                          as="select"
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                )}
+                    </ListGroup.Item>
+                    
+{product.countInStock > 0 }
 
                 <ListGroup.Item>
                   <Button
-                    onClick={addToCartHandler}
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}

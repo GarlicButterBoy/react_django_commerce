@@ -15,7 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match, history }) {
+function ProductScreen({ match }) {
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
@@ -25,11 +25,6 @@ function ProductScreen({ match, history }) {
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
-
-  const addToCartHandler = () => {
-    console.log("Add to Cart: ", match.params.id);
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
-  };
 
   return (
     <div>
@@ -94,9 +89,9 @@ function ProductScreen({ match, history }) {
                           value={qty}
                           onChange={(e) => setQty(e.target.value)}
                         >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
+                              {[...Array(product.countInStock).keys()].map((x) => (
+                                <option>
+                                  {x+1}
                             </option>
                           ))}
                         </Form.Control>
@@ -107,7 +102,6 @@ function ProductScreen({ match, history }) {
 
                 <ListGroup.Item>
                   <Button
-                    onClick={addToCartHandler}
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}

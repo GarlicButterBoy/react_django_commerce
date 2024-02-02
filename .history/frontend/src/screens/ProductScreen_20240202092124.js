@@ -15,7 +15,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from "../actions/productActions";
 
-function ProductScreen({ match, history }) {
+function ProductScreen({ match }) {
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
@@ -27,8 +27,7 @@ function ProductScreen({ match, history }) {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    console.log("Add to Cart: ", match.params.id);
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
+    console.log("Add to Cart: ");
   };
 
   return (
