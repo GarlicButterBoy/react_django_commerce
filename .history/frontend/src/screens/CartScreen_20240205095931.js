@@ -19,16 +19,11 @@ function CartScreen({ match, location, history }) {
   console.log("qty ", qty);
 
   const dispatch = useDispatch();
-
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-  console.log("cartItems:", cartItems);
-
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [dispatch, productId, qty]);
+  });
 
   return <div>Cart</div>;
 }

@@ -18,11 +18,9 @@ function CartScreen({ match, location, history }) {
   const qty = location.search ? location.search.split("=")[1] : 1;
   console.log("qty ", qty);
 
-  const dispatch = useDispatch();
-
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
-  console.log("cartItems:", cartItems);
+    const dispatch = useDispatch();
+    
+const cart = useSelector(state => state.)
 
   useEffect(() => {
     if (productId) {
