@@ -14,10 +14,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
 
-        data['username'] = self.user.username
-        data['email'] = self.user.email
+        refresh = self.get_token(self.user)
 
-        return data    
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
     
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer    
