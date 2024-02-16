@@ -61,7 +61,7 @@ def updateUserProfile(request):
     if data['password'] != '':
         user.password = make_password(data['password'])
 
-    user.save()    
+        
 
     return Response(serializer.data)    
 

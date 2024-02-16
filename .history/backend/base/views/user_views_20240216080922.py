@@ -45,24 +45,12 @@ def registerUser(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 # Create your views here.
-@api_view(['PUT',])
+@api_view(['GET',])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
     user = request.user
     
-    serializer = UserSerializerWithToken(user, many=False)
-
-    data = request.data
-
-    user.first_name = data['name']
-    user.username = data['email']
-    user.email = data['email']
-
-    if data['password'] != '':
-        user.password = make_password(data['password'])
-
-    user.save()    
-
+    serializer = UserSerializer(user, many=False)
     return Response(serializer.data)    
 
 @api_view(['GET',])
