@@ -9,9 +9,7 @@ function Header() {
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
 
-  const logoutHandler = () => {
-    dispatch(logout());
-  };
+  const logoutHandler = () => console.log("Logout");
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
