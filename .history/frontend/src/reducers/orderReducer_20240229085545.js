@@ -68,21 +68,22 @@ export const orderDetailsReducer = (
 
 export const orderPayReducer = (state = {}, action) => {
   switch (action.type) {
-    case ORDER_PAY_REQUEST:
+    case ORDER_CREATE_REQUEST:
       return {
         loading: true,
       };
-    case ORDER_PAY_SUCCESS:
+    case ORDER_CREATE_SUCCESS:
       return {
         loading: false,
         success: true,
+        order: action.payload,
       };
-    case ORDER_PAY_FAIL:
+    case ORDER_CREATE_FAIL:
       return {
         loading: false,
         error: action.payload,
       };
-    case ORDER_PAY_RESET:
+    case ORDER_CREATE_RESET:
       return {};
     default:
       return state;
