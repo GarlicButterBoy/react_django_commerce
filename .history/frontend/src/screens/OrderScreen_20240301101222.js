@@ -37,7 +37,7 @@ function OrderScreen({ match }) {
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=ASj-pmyYPJ9fQabbs4nO4xv-BiSRq5ri9UdZxzsgWHeumm7ZlARaGbCQ0nxIXutNNdW24EJCZkWbnX1N";
+      "https://www.paypal.com/sdk/js?client-id=ASj-pmyYPJ9fQabbs4nO4xv-BiSRq5ri9UdZxzsgWHeumm7ZlARaGbCQ0nxIXutNNdW24EJCZkWbnX1N-clientID&buyer-country=CA";
     script.async = true;
     script.onload = () => {
       setSdkReady(true);

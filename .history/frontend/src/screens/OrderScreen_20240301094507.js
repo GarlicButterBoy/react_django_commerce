@@ -10,11 +10,9 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { PayPalButton } from "react-paypal-button-v2";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getOrderDetails, payOrder } from "../actions/orderActions";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 function OrderScreen({ match }) {
   const orderId = match.params.id;
@@ -47,7 +45,6 @@ function OrderScreen({ match }) {
 
   useEffect(() => {
     if (!order || successPay || order._id !== Number(orderId)) {
-      dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -59,7 +56,7 @@ function OrderScreen({ match }) {
   }, [dispatch, order, orderId, successPay]);
 
   const successPaymentHandler = (paymentResult) => {
-    dispatch(payOrder(orderId, paymentResult));
+    dispatch(payOrder(orderId,))
   };
 
   return loading ? (
@@ -176,20 +173,6 @@ function OrderScreen({ match }) {
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-
-              {!order.isPaid && (
-                <ListGroup.Item>
-                  {loadingPay && <Loader />}
-                  {!sdkReady ? (
-                    <Loader />
-                  ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      onSuccess={successPaymentHandler}
-                    />
-                  )}
-                </ListGroup.Item>
-              )}
             </ListGroup>
           </Card>
         </Col>
