@@ -60,7 +60,6 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
-  dispatch({ type: USER_LIST_RESET });
   dispatch({ type: ORDER_LIST_MY_RESET });
 };
 
@@ -200,12 +199,23 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/users/`, config);
+    const { data } = await axios.put(
+      `/api/users/profile/update/`,
+      user,
+      config
+    );
 
     dispatch({
       type: USER_LIST_SUCCESS,
       payload: data,
     });
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    });
+
+    localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LIST_FAIL,

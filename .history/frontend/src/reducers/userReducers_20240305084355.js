@@ -83,7 +83,7 @@ export const userUpdateProfileReducer = (state = {}, action) => {
       return { loading: true };
 
     case USER_UPDATE_PROFILE_SUCCESS:
-      return { loading: false, success: true, userInfo: action.payload };
+      return { loading: false, success: true, user: action.payload };
 
     case USER_UPDATE_PROFILE_FAIL:
       return { loading: false, error: action.payload };
@@ -102,13 +102,13 @@ export const userListReducer = (state = { users: [] }, action) => {
       return { loading: true };
 
     case USER_LIST_SUCCESS:
-      return { loading: false, users: action.payload };
+      return { loading: false, user: action.payload };
 
     case USER_LIST_FAIL:
       return { loading: false, error: action.payload };
 
     case USER_LIST_RESET:
-      return { users: [] };
+      return {};
 
     default:
       return state;

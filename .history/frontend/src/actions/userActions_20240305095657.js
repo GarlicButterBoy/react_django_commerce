@@ -194,13 +194,14 @@ export const listUsers = () => async (dispatch, getState) => {
     } = getState();
 
     const config = {
+      console.log();
       headers: {
         "Content-type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    const { data } = await axios.get(`/api/users/`, config);
+    const { data } = await axios.put(`/api/users/`, config);
 
     dispatch({
       type: USER_LIST_SUCCESS,

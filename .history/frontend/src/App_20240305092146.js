@@ -12,7 +12,7 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymenttScreen from "./screens/PaymenttScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
-import UserListScreen from "./screens/UserListScreen";
+import UserListScreen from "./screens/UserListScreen"
 
 function App() {
   return (
