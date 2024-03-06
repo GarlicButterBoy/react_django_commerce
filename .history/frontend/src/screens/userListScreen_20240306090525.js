@@ -11,7 +11,7 @@ function UserListScreen({ history }) {
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const { loading, error, users } = userLogin;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {

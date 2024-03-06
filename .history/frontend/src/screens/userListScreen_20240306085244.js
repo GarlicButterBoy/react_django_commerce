@@ -6,25 +6,14 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listUsers } from "../actions/userActions";
 
-function UserListScreen({ history }) {
+function UserListScreen() {
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers());
-    } else {
-      history.push("/login");
-    }
+    dispatch(listUsers());
   }, [dispatch]);
-
-  const deleteHandler = (id) => {
-    console.log("Delete: ", id);
-  };
-
   return (
     <div>
       <h1>Users</h1>
@@ -35,13 +24,11 @@ function UserListScreen({ history }) {
       ) : (
         <Table striped bordered hover responsive className="table-sm">
           <thead>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>ADMIN</th>
-              <th></th>
-            </tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>ADMIN</th>
+            <th></th>
           </thead>
           <tbody>
             {users.map((user) => (
@@ -56,20 +43,7 @@ function UserListScreen({ history }) {
                     <i className="fas fa-times" style={{ color: "red" }}></i>
                   )}
                 </td>
-                <td>
-                  <LinkContainer to={`/admin/user/${user._id}`}>
-                    <Button variant="light" className="btn-sm">
-                      <i className="fas fa-edit"></i>
-                    </Button>
-                  </LinkContainer>
-                  <Button
-                    variant="danger"
-                    className="btn-sm"
-                    onClick={() => deleteHandler(user._id)}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </Button>
-                </td>
+                <td>{}</td>
               </tr>
             ))}
           </tbody>
