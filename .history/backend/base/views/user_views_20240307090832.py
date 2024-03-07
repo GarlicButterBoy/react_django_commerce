@@ -84,5 +84,5 @@ def getUsers(request):
 @permission_classes([IsAdminUser])
 def deleteUser(request, pk):
     userForDeletion = User.objects.get(id=pk)
-    userForDeletion.delete()
-    return Response('User was deleted')
+    serializer = UserSerializer(users, many=False)
+    return Response(serializer.data)

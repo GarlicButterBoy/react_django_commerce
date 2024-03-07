@@ -85,4 +85,4 @@ def getUsers(request):
 def deleteUser(request, pk):
     userForDeletion = User.objects.get(id=pk)
     userForDeletion.delete()
-    return Response('User was deleted')
+    return Response(serializer.data)
