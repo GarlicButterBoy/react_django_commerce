@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { getUserDetails, updateUser } from "../actions/userActions";
-import { USER_UPDATE_RESET } from "../constants/userConstants";
+import {USER_UP} from '../constants/userConstants'
 
 function UserEditScreen({ match, history }) {
   const userId = match.params.id;
@@ -27,23 +27,17 @@ function UserEditScreen({ match, history }) {
   } = userUpdate;
 
   useEffect(() => {
-    if (successUpdate) {
-      dispatch({ type: USER_UPDATE_RESET });
-      history.push("/admin/userlist");
+    if (!user.name || user._id !== Number(userId)) {
+      dispatch(getUserDetails(userId));
     } else {
-      if (!user.name || user._id !== Number(userId)) {
-        dispatch(getUserDetails(userId));
-      } else {
-        setName(user.name);
-        setEmail(user.email);
-        setAdmin(user.isAdmin);
-      }
+      setName(user.name);
+      setEmail(user.email);
+      setAdmin(user.isAdmin);
     }
-  }, [user, userId, successUpdate, history]);
+  }, [user, userId]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUser({ _id: user._id, name, email, isAdmin }));
   };
 
   return (
@@ -51,8 +45,7 @@ function UserEditScreen({ match, history }) {
       <Link to="/admin/userlist">Go Back</Link>
       <FormContainer>
         <h1>Edit User</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+
         {loading ? (
           <Loader />
         ) : error ? (

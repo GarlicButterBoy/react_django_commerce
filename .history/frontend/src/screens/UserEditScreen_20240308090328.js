@@ -39,11 +39,10 @@ function UserEditScreen({ match, history }) {
         setAdmin(user.isAdmin);
       }
     }
-  }, [user, userId, successUpdate, history]);
+  }, [user, userId]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateUser({ _id: user._id, name, email, isAdmin }));
   };
 
   return (
@@ -51,8 +50,7 @@ function UserEditScreen({ match, history }) {
       <Link to="/admin/userlist">Go Back</Link>
       <FormContainer>
         <h1>Edit User</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+
         {loading ? (
           <Loader />
         ) : error ? (
