@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listUsers, deleteUser } from "../actions/userActions";
 
-function UserListScreen({ history }) {
+function ProductListScreen({ history }) {
   const dispatch = useDispatch();
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
@@ -21,7 +21,7 @@ function UserListScreen({ history }) {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, successDelete, userInfo]);
+  }, [dispatch, history, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
@@ -83,4 +83,4 @@ function UserListScreen({ history }) {
   );
 }
 
-export default UserListScreen;
+export default ProductListScreen;
