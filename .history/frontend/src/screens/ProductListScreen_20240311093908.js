@@ -10,12 +10,6 @@ function ProductListScreen({ history, match }) {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
-  const productDelete = useSelector((state) => state.productDelete);
-  const {
-    loading: loadingDelete,
-    error: errorDelete,
-    success: successDelete,
-  } = productDelete;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -25,7 +19,7 @@ function ProductListScreen({ history, match }) {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, successDelete]);
+  }, [dispatch, history, userInfo]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
@@ -50,9 +44,6 @@ function ProductListScreen({ history, match }) {
           </Button>
         </Col>
       </Row>
-
-      {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

@@ -27,4 +27,4 @@ def getProduct(request, pk):
 def deleteProduct(request, pk):
     product = Product.objects.get(_id=pk)
     product.delete()
-    return Response('Product Deleted.')
+    return Response(serializer.data)

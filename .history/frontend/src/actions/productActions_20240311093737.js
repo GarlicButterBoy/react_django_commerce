@@ -57,7 +57,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-export const deleteProduct = (id) => async (dispatch, getState) => {
+export const deleteProduct = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: PRODUCT_DELETE_REQUEST,
@@ -74,10 +74,11 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/products/delete/${id}`, config);
+    const { data } = await axios.delete(`/api/products/myorders/`, config);
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
+      payload: data,
     });
   } catch (error) {
     dispatch({

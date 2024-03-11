@@ -25,7 +25,7 @@ function ProductListScreen({ history, match }) {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, successDelete]);
+  }, [dispatch, history, userInfo]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
@@ -50,9 +50,6 @@ function ProductListScreen({ history, match }) {
           </Button>
         </Col>
       </Row>
-
-      {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

@@ -51,8 +51,7 @@ function ProductListScreen({ history, match }) {
         </Col>
       </Row>
 
-      {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+      {}
       {loading ? (
         <Loader />
       ) : error ? (

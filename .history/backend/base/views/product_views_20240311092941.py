@@ -26,5 +26,6 @@ def getProduct(request, pk):
 @permission_classes(['IsAdminUser',])
 def deleteProduct(request, pk):
     product = Product.objects.get(_id=pk)
-    product.delete()
-    return Response('Product Deleted.')
+    serializer = ProductSerializer(product, many=False)
+
+    return Response(serializer.data)

@@ -57,7 +57,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-export const deleteProduct = (id) => async (dispatch, getState) => {
+export const deleteProduct = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: PRODUCT_DELETE_REQUEST,

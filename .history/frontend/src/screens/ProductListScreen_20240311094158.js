@@ -52,7 +52,7 @@ function ProductListScreen({ history, match }) {
       </Row>
 
       {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+      {errorDelete && <Message>{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
