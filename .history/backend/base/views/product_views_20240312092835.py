@@ -49,10 +49,10 @@ def updateProduct(request, pk):
     product.price = data['price']
     product.brand = data['brand']
     product.countInStock = data['countInStock']
-    product.category = data['category']
-    product.description = data['description']
+    product.category = data['name']
+    product.name = data['name']
 
-    product.save()
+    product.save
 
     serializer = ProductSerializer(product, many=False)
 

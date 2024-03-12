@@ -46,13 +46,6 @@ def updateProduct(request, pk):
     product = Product.objects.get(_id=pk)
 
     product.name = data['name']
-    product.price = data['price']
-    product.brand = data['brand']
-    product.countInStock = data['countInStock']
-    product.category = data['category']
-    product.description = data['description']
-
-    product.save()
 
     serializer = ProductSerializer(product, many=False)
 

@@ -52,7 +52,7 @@ def updateProduct(request, pk):
     product.category = data['category']
     product.description = data['description']
 
-    product.save()
+    product.save
 
     serializer = ProductSerializer(product, many=False)
 

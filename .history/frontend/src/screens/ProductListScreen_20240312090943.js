@@ -8,17 +8,15 @@ import { listProducts, deleteProduct } from "../actions/productActions";
 
 function ProductListScreen({ history, match }) {
   const dispatch = useDispatch();
-
+  
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
-
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
   } = productDelete;
-  
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
