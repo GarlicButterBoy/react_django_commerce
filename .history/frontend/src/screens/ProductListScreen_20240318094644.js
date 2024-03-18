@@ -38,7 +38,7 @@ function ProductListScreen({ history, match }) {
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (userInfo.isAdmin) {
       history.push("/login");
     }
 
@@ -65,7 +65,7 @@ function ProductListScreen({ history, match }) {
 
   const createProductHandler = (product) => {
     //Create Product
-    dispatch(createProduct());
+    
   };
 
   return (

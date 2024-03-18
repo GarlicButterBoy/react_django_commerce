@@ -38,7 +38,7 @@ function ProductListScreen({ history, match }) {
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
+    if (userInfo.isAdmin) {
       history.push("/login");
     }
 
@@ -65,7 +65,6 @@ function ProductListScreen({ history, match }) {
 
   const createProductHandler = (product) => {
     //Create Product
-    dispatch(createProduct());
   };
 
   return (
@@ -83,9 +82,6 @@ function ProductListScreen({ history, match }) {
 
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
-      {loadingCreate && <Loader />}
-      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
-
       {loading ? (
         <Loader />
       ) : error ? (
