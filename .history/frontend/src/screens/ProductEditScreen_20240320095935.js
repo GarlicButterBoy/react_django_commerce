@@ -29,40 +29,27 @@ function ProductEditScreen({ match, history }) {
     success: successUpdate,
   } = productUpdate;
 
-  useEffect(() => {
-    if (successUpdate) {
-      dispatch({ type: PRODUCT_UPDATE_RESET });
-      history.push("/admin/productlist");
+    useEffect(() => {
+      
+        if (successUpdate) {
+            dispatch(PRODUCT_UPDATE_RESET);
+        }
+    if (!product.name || product._id !== Number(productId)) {
+      dispatch(listProductDetails(productId));
     } else {
-      if (!product.name || product._id !== Number(productId)) {
-        dispatch(listProductDetails(productId));
-      } else {
-        setName(product.name);
-        setPrice(product.price);
-        setImage(product.image);
-        setBrand(product.brand);
-        setCategory(product.category);
-        setCountInStock(product.countInStock);
-        setDescription(product.description);
-      }
+      setName(product.name);
+      setPrice(product.price);
+      setImage(product.image);
+      setBrand(product.brand);
+      setCategory(product.category);
+      setCountInStock(product.countInStock);
+      setDescription(product.description);
     }
-  }, [dispatch, product, productId, history, successUpdate]);
+  }, [dispatch, product, productId, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     //Update Product
-    dispatch(
-      updateProduct({
-        _id: productId,
-        name,
-        price,
-        image,
-        brand,
-        category,
-        countInStock,
-        description,
-      })
-    );
   };
 
   return (
@@ -70,8 +57,6 @@ function ProductEditScreen({ match, history }) {
       <Link to="/admin/productlist">Go Back</Link>
       <FormContainer>
         <h1>Edit Product</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (

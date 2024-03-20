@@ -51,27 +51,18 @@ function ProductEditScreen({ match, history }) {
   const submitHandler = (e) => {
     e.preventDefault();
     //Update Product
-    dispatch(
-      updateProduct({
-        _id: productId,
-        name,
-        price,
-        image,
-        brand,
-        category,
-        countInStock,
-        description,
-      })
-    );
   };
 
   return (
     <div>
       <Link to="/admin/productlist">Go Back</Link>
       <FormContainer>
-        <h1>Edit Product</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+              <h1>Edit Product</h1>
+              {loadingUpdate ? (
+                  <Loader />
+              ) : error ? (
+                  <Message variant="danger">{error}</Message>
+              )}
         {loading ? (
           <Loader />
         ) : error ? (

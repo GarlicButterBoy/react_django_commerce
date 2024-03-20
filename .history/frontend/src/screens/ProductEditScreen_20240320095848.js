@@ -20,49 +20,28 @@ function ProductEditScreen({ match, history }) {
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
-
-  const productUpdate = useSelector((state) => state.productUpdate);
-  const {
-    loading: loadingUpdate,
-    error: errorUpdate,
-    success: successUpdate,
-  } = productUpdate;
+    const { loading, error, product } = productDetails;
+    
+      const productUpdate = useSelector((state) => state.productUpdate);
+      const { loading, error: errorUpdate, product } = productUpdate;
 
   useEffect(() => {
-    if (successUpdate) {
-      dispatch({ type: PRODUCT_UPDATE_RESET });
-      history.push("/admin/productlist");
+    if (!product.name || product._id !== Number(productId)) {
+      dispatch(listProductDetails(productId));
     } else {
-      if (!product.name || product._id !== Number(productId)) {
-        dispatch(listProductDetails(productId));
-      } else {
-        setName(product.name);
-        setPrice(product.price);
-        setImage(product.image);
-        setBrand(product.brand);
-        setCategory(product.category);
-        setCountInStock(product.countInStock);
-        setDescription(product.description);
-      }
+      setName(product.name);
+      setPrice(product.price);
+      setImage(product.image);
+      setBrand(product.brand);
+      setCategory(product.category);
+      setCountInStock(product.countInStock);
+      setDescription(product.description);
     }
-  }, [dispatch, product, productId, history, successUpdate]);
+  }, [dispatch, product, productId, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     //Update Product
-    dispatch(
-      updateProduct({
-        _id: productId,
-        name,
-        price,
-        image,
-        brand,
-        category,
-        countInStock,
-        description,
-      })
-    );
   };
 
   return (
@@ -70,8 +49,6 @@ function ProductEditScreen({ match, history }) {
       <Link to="/admin/productlist">Go Back</Link>
       <FormContainer>
         <h1>Edit Product</h1>
-        {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
