@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import FormContainer from "../components/FormContainer";
+import { listProductDetails } from "../actions/productActions";
+
+function ProductEditScreen({ match, history }) {
+  const productId = match.params.id;
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [image, setImage] = useState("");
+  const [brand, setBrand] = useState("");
+  const [category, setCategory] = useState("");
+  const [countInStock, setCountInStock] = useState(0);
+  const [description, setDescription] = useState("");
+
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
+
+  useEffect(() => {
+    if (!user.name || user._id !== Number(userId)) {
+      dispatch(getUserDetails(userId));
+    } else {
+      setName(user.name);
+      setPrice(user.price);
+      setImage(user.image);
+      setBrand(user.isAdmin);
+      setCategory(user.isAdmin);
+      setCountInStock(user.isAdmin);
+      setDescription(user.isAdmin);
+    }
+  }, [user, userId, successUpdate, history]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(updateUser({ _id: user._id, name, email, isAdmin }));
+  };
+
+  return (
+    <div>
+      <Link to="/admin/userlist">Go Back</Link>
+      <FormContainer>
+        <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error}</Message>
+        ) : (
+          <Form onSubmit={submitHandler}>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="name"
+                placeholder="Enter Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId="isAdmin">
+              <Form.Check
+                type="checkbox"
+                label="Is Admin?"
+                checked={isAdmin}
+                onChange={(e) => setAdmin(e.target.checked)}
+              ></Form.Check>
+            </Form.Group>
+
+            <Button type="submit" variant="primary">
+              Update
+            </Button>
+          </Form>
+        )}
+      </FormContainer>
+    </div>
+  );
+}
+
+export default ProductEditScreen;
