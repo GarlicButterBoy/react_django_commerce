@@ -70,7 +70,7 @@ function ProductEditScreen({ match, history }) {
   };
 
   const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
+    const file = e.target.file[0];
     const formData = new FormData();
 
     formData.append("image", file);
@@ -84,14 +84,8 @@ function ProductEditScreen({ match, history }) {
         },
       };
 
-      const { data } = await axios.post(
-        "/api/products/upload/",
-        formData,
-        config
-      );
-
-      setImage(data);
-      setUploading(false);
+      const { data } = await axios.post("/api/products/upload/");
+      
     } catch (error) {
       setUploading(false);
     }
