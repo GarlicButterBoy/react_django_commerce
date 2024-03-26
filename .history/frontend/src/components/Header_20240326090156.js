@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navbar, Nav, Container, Row, Col, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import SearchBox from "../components/SearchBox";
+import moduleName from '../components/'
 import { logout } from "../actions/userActions";
 
 function Header() {
@@ -22,7 +22,6 @@ function Header() {
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nac" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <SearchBox />
           <Nav className="mr-auto">
             <LinkContainer to="/cart">
               <Nav.Link>

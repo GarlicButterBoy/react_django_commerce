@@ -15,8 +15,9 @@ def getProducts(request):
     print('query: ', query)
     if query == None:
         query=''
+        
 
-    products = Product.objects.filter(name__icontains=query)
+    products = Product.objects.all()
     serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 

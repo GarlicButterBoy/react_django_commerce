@@ -14,7 +14,7 @@ function HomeScreen({ history }) {
   let keyword = history.location.search;
   console.log(keyword);
   useEffect(() => {
-    dispatch(listProducts(keyword));
+    dispatch(listProducts(keyord));
   }, [dispatch, keyword]);
 
   return (

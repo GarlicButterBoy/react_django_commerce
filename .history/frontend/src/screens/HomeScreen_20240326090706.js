@@ -12,9 +12,9 @@ function HomeScreen({ history }) {
   const { error, loading, products } = productList;
 
   let keyword = history.location.search;
-  console.log(keyword);
+
   useEffect(() => {
-    dispatch(listProducts(keyword));
+    dispatch(listProducts());
   }, [dispatch, keyword]);
 
   return (

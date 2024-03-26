@@ -28,7 +28,7 @@ export const listProducts =
         type: PRODUCT_LIST_REQUEST,
       });
 
-      const { data } = await axios.get(`/api/products${keyword}`);
+      const { data } = await axios.get(`/api/products/${keyword}}`);
 
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
